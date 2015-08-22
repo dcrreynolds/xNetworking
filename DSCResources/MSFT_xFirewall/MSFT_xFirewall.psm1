@@ -42,8 +42,8 @@ function Get-TargetResource
     $getTargetResourceResult.Direction = $firewallRule.Direction
 
     $properties = Get-FirewallRuleProperty -FirewallRule $firewallRule -Property All
-    $getTargetResourceResult.RemotePort = $properties.PortFilters.RemotePort
-    $getTargetResourceResult.LocalPort = $properties.PortFilters.LocalPort
+    $getTargetResourceResult.RemotePort = @($properties.PortFilters.RemotePort)
+    $getTargetResourceResult.LocalPort = @($properties.PortFilters.LocalPort)
     $getTargetResourceResult.Protocol = $properties.PortFilters.Protocol
     $getTargetResourceResult.Description = $firewallRule.Description
     $getTargetResourceResult.ApplicationPath = $properties.ApplicationFilters.Program
